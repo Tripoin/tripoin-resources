@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 12, 2016 at 08:10 PM
+-- Generation Time: Oct 12, 2016 at 08:17 PM
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -147,6 +147,7 @@ INSERT INTO `mst_locale` (`locale_id`, `locale_code`, `locale_name`, `status`, `
 CREATE TABLE IF NOT EXISTS `mst_profile` (
 `profile_id` bigint(20) NOT NULL,
   `profile_email` varchar(255) NOT NULL,
+  `profile_code` varchar(255) NOT NULL,
   `profile_name` varchar(255) DEFAULT NULL,
   `profile_gender` varchar(255) DEFAULT NULL,
   `profile_birthdate` date DEFAULT NULL,
@@ -169,15 +170,15 @@ CREATE TABLE IF NOT EXISTS `mst_profile` (
   `modified_ip` varchar(150) DEFAULT NULL,
   `modified_time` timestamp NULL DEFAULT NULL,
   `modified_platform` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `mst_profile`
 --
 
-INSERT INTO `mst_profile` (`profile_id`, `profile_email`, `profile_name`, `profile_gender`, `profile_birthdate`, `profile_address`, `profile_phone`, `profile_photo`, `profile_bio`, `profile_resources_uuid`, `profile_forgot_uuid`, `profile_forgot_expired`, `user_id`, `locale_id`, `status`, `remarks`, `created_by`, `created_ip`, `created_time`, `created_platform`, `modified_by`, `modified_ip`, `modified_time`, `modified_platform`) VALUES
-(1, 'tripoinstudio@gmail.com', 'Tripoin, Inc.', 'MALE', '2016-01-01', 'Jalan Kapten Subidjanto DJ', '0812345678', NULL, NULL, NULL, NULL, NULL, 1, 25, NULL, NULL, 'admin', '127.0.0.1', '2016-08-31 03:36:29', NULL, NULL, NULL, NULL, NULL),
-(3, 'user@mail.com', 'User', 'FEMALE', '2016-10-12', 'Jalan Kapten Subidjanto DJ', '0812345679', NULL, NULL, NULL, NULL, NULL, 2, 10, NULL, NULL, 'admin', '127.0.0.1', '2016-10-12 16:58:32', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `mst_profile` (`profile_id`, `profile_email`, `profile_code`, `profile_name`, `profile_gender`, `profile_birthdate`, `profile_address`, `profile_phone`, `profile_photo`, `profile_bio`, `profile_resources_uuid`, `profile_forgot_uuid`, `profile_forgot_expired`, `user_id`, `locale_id`, `status`, `remarks`, `created_by`, `created_ip`, `created_time`, `created_platform`, `modified_by`, `modified_ip`, `modified_time`, `modified_platform`) VALUES
+(1, 'tripoinstudio@gmail.com', 'tripoinstudio@gmail.com', 'Tripoin, Inc.', 'MALE', '2016-01-01', 'Jalan Kapten Subidjanto DJ', '0812345678', NULL, NULL, NULL, NULL, NULL, 1, 25, NULL, NULL, 'admin', '127.0.0.1', '2016-08-31 03:36:29', NULL, NULL, NULL, NULL, NULL),
+(2, 'user@mail.com', 'user@mail.com', 'User', 'FEMALE', '2016-10-12', 'Jalan Kapten Subidjanto DJ', '0812345679', NULL, NULL, NULL, NULL, NULL, 2, 10, NULL, NULL, 'admin', '127.0.0.1', '2016-10-12 16:58:32', NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
