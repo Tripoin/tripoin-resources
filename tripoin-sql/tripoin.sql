@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 12, 2016 at 08:17 PM
+-- Generation Time: Oct 14, 2016 at 12:26 PM
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -27,9 +27,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `mst_api_type` (
-`api_type_id` bigint(20) NOT NULL,
-  `api_type_code` varchar(150) NOT NULL,
-  `api_type_name` varchar(255) NOT NULL,
+`id` bigint(20) NOT NULL,
+  `code` varchar(150) NOT NULL,
+  `name` varchar(255) NOT NULL,
   `api_type_identifier` varchar(150) NOT NULL,
   `api_type_secret` varchar(150) NOT NULL,
   `api_type_host` varchar(150) NOT NULL,
@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `mst_api_type` (
 -- Dumping data for table `mst_api_type`
 --
 
-INSERT INTO `mst_api_type` (`api_type_id`, `api_type_code`, `api_type_name`, `api_type_identifier`, `api_type_secret`, `api_type_host`, `api_type_port`, `api_type_protocol`, `api_type_redirect`, `api_type_expired`, `status`, `remarks`, `created_by`, `created_ip`, `created_time`, `created_platform`, `modified_by`, `modified_ip`, `modified_time`, `modified_platform`) VALUES
+INSERT INTO `mst_api_type` (`id`, `code`, `name`, `api_type_identifier`, `api_type_secret`, `api_type_host`, `api_type_port`, `api_type_protocol`, `api_type_redirect`, `api_type_expired`, `status`, `remarks`, `created_by`, `created_ip`, `created_time`, `created_platform`, `modified_by`, `modified_ip`, `modified_time`, `modified_platform`) VALUES
 (1, 'FACEBOOK', 'Facebook API', '1569758926648647', 'af4af3d0b5f00378b213e8b3ce9c2bee', 'https://graph.facebook.com', '443', 'https', 'http://localhost:8080/api/secret/facebook', NULL, NULL, NULL, 'admin', '127.0.0.1', '2016-09-01 05:04:35', NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
@@ -63,9 +63,9 @@ INSERT INTO `mst_api_type` (`api_type_id`, `api_type_code`, `api_type_name`, `ap
 --
 
 CREATE TABLE IF NOT EXISTS `mst_locale` (
-`locale_id` bigint(20) NOT NULL,
-  `locale_code` varchar(10) NOT NULL,
-  `locale_name` varchar(255) NOT NULL,
+`id` bigint(20) NOT NULL,
+  `code` varchar(10) NOT NULL,
+  `name` varchar(255) NOT NULL,
   `status` smallint(5) DEFAULT '1',
   `remarks` varchar(255) DEFAULT NULL,
   `created_by` varchar(150) DEFAULT 'admin',
@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `mst_locale` (
 -- Dumping data for table `mst_locale`
 --
 
-INSERT INTO `mst_locale` (`locale_id`, `locale_code`, `locale_name`, `status`, `remarks`, `created_by`, `created_ip`, `created_time`, `created_platform`, `modified_by`, `modified_ip`, `modified_time`, `modified_platform`) VALUES
+INSERT INTO `mst_locale` (`id`, `code`, `name`, `status`, `remarks`, `created_by`, `created_ip`, `created_time`, `created_platform`, `modified_by`, `modified_ip`, `modified_time`, `modified_platform`) VALUES
 (1, 'ar', 'Arabic', 1, NULL, 'admin', '127.0.0.1', '2016-09-04 15:36:21', NULL, NULL, NULL, NULL, NULL),
 (2, 'am', 'Amharic', 1, NULL, 'admin', '127.0.0.1', '2016-09-04 15:36:21', NULL, NULL, NULL, NULL, NULL),
 (3, 'bg', 'Bulgarian', 1, NULL, 'admin', '127.0.0.1', '2016-09-04 15:36:21', NULL, NULL, NULL, NULL, NULL),
@@ -145,10 +145,10 @@ INSERT INTO `mst_locale` (`locale_id`, `locale_code`, `locale_name`, `status`, `
 --
 
 CREATE TABLE IF NOT EXISTS `mst_profile` (
-`profile_id` bigint(20) NOT NULL,
+`id` bigint(20) NOT NULL,
+  `code` varchar(255) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
   `profile_email` varchar(255) NOT NULL,
-  `profile_code` varchar(255) NOT NULL,
-  `profile_name` varchar(255) DEFAULT NULL,
   `profile_gender` varchar(255) DEFAULT NULL,
   `profile_birthdate` date DEFAULT NULL,
   `profile_address` text,
@@ -176,9 +176,9 @@ CREATE TABLE IF NOT EXISTS `mst_profile` (
 -- Dumping data for table `mst_profile`
 --
 
-INSERT INTO `mst_profile` (`profile_id`, `profile_email`, `profile_code`, `profile_name`, `profile_gender`, `profile_birthdate`, `profile_address`, `profile_phone`, `profile_photo`, `profile_bio`, `profile_resources_uuid`, `profile_forgot_uuid`, `profile_forgot_expired`, `user_id`, `locale_id`, `status`, `remarks`, `created_by`, `created_ip`, `created_time`, `created_platform`, `modified_by`, `modified_ip`, `modified_time`, `modified_platform`) VALUES
-(1, 'tripoinstudio@gmail.com', 'tripoinstudio@gmail.com', 'Tripoin, Inc.', 'MALE', '2016-01-01', 'Jalan Kapten Subidjanto DJ', '0812345678', NULL, NULL, NULL, NULL, NULL, 1, 25, NULL, NULL, 'admin', '127.0.0.1', '2016-08-31 03:36:29', NULL, NULL, NULL, NULL, NULL),
-(2, 'user@mail.com', 'user@mail.com', 'User', 'FEMALE', '2016-10-12', 'Jalan Kapten Subidjanto DJ', '0812345679', NULL, NULL, NULL, NULL, NULL, 2, 10, NULL, NULL, 'admin', '127.0.0.1', '2016-10-12 16:58:32', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `mst_profile` (`id`, `code`, `name`, `profile_email`, `profile_gender`, `profile_birthdate`, `profile_address`, `profile_phone`, `profile_photo`, `profile_bio`, `profile_resources_uuid`, `profile_forgot_uuid`, `profile_forgot_expired`, `user_id`, `locale_id`, `status`, `remarks`, `created_by`, `created_ip`, `created_time`, `created_platform`, `modified_by`, `modified_ip`, `modified_time`, `modified_platform`) VALUES
+(1, 'tripoinstudio@gmail.com', 'Tripoin, Inc.', 'tripoinstudio@gmail.com', 'MALE', '2016-01-01', 'Jalan Kapten Subidjanto DJ', '0812345678', NULL, NULL, NULL, NULL, NULL, 1, 25, NULL, NULL, 'admin', '127.0.0.1', '2016-08-31 03:36:29', NULL, NULL, NULL, NULL, NULL),
+(2, 'user@mail.com', 'User', 'user@mail.com', 'FEMALE', '2016-10-12', 'Jalan Kapten Subidjanto DJ', '0812345679', NULL, NULL, NULL, NULL, NULL, 2, 10, NULL, NULL, 'admin', '127.0.0.1', '2016-10-12 16:58:32', NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -355,19 +355,19 @@ INSERT INTO `sys_system_parameter` (`system_parameter_id`, `system_parameter_cod
 -- Indexes for table `mst_api_type`
 --
 ALTER TABLE `mst_api_type`
- ADD PRIMARY KEY (`api_type_id`), ADD UNIQUE KEY `api_type_code` (`api_type_code`);
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `api_type_code` (`code`);
 
 --
 -- Indexes for table `mst_locale`
 --
 ALTER TABLE `mst_locale`
- ADD PRIMARY KEY (`locale_id`), ADD UNIQUE KEY `locale_code` (`locale_code`);
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `locale_code` (`code`);
 
 --
 -- Indexes for table `mst_profile`
 --
 ALTER TABLE `mst_profile`
- ADD PRIMARY KEY (`profile_id`), ADD UNIQUE KEY `profile_email` (`profile_email`), ADD UNIQUE KEY `profile_phone` (`profile_phone`), ADD KEY `user_id` (`user_id`), ADD KEY `user_id_2` (`user_id`), ADD KEY `locale_id` (`locale_id`);
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `profile_email` (`profile_email`), ADD UNIQUE KEY `profile_phone` (`profile_phone`), ADD KEY `user_id` (`user_id`), ADD KEY `user_id_2` (`user_id`), ADD KEY `locale_id` (`locale_id`);
 
 --
 -- Indexes for table `oauth_client_details`
@@ -401,17 +401,17 @@ ALTER TABLE `sys_system_parameter`
 -- AUTO_INCREMENT for table `mst_api_type`
 --
 ALTER TABLE `mst_api_type`
-MODIFY `api_type_id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `mst_locale`
 --
 ALTER TABLE `mst_locale`
-MODIFY `locale_id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=55;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=55;
 --
 -- AUTO_INCREMENT for table `mst_profile`
 --
 ALTER TABLE `mst_profile`
-MODIFY `profile_id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `sec_role`
 --
@@ -431,7 +431,7 @@ MODIFY `user_id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 ALTER TABLE `mst_profile`
 ADD CONSTRAINT `mst_profile_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `sec_user_details` (`user_id`),
-ADD CONSTRAINT `mst_profile_ibfk_2` FOREIGN KEY (`locale_id`) REFERENCES `mst_locale` (`locale_id`);
+ADD CONSTRAINT `mst_profile_ibfk_2` FOREIGN KEY (`locale_id`) REFERENCES `mst_locale` (`id`);
 
 --
 -- Constraints for table `sec_user_details`
